@@ -1,12 +1,14 @@
+import 'package:b2b_ecommerce/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'home.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-
-void main() {
-  runApp(const ProviderScope (child : MyApp()));
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  runApp(const ProviderScope(child: MyApp()));
 }
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -62,13 +64,10 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _incrementCounter() {
-
-     Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => const HomeScreen()),
-  );
-
-
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const HomeScreen()),
+    );
 
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -131,7 +130,6 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _incrementCounter,
         tooltip: 'Go to Home',
         child: const Icon(Icons.arrow_forward),
-        
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
