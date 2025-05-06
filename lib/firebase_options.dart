@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -28,15 +25,9 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -65,4 +56,34 @@ class DefaultFirebaseOptions {
     storageBucket: 'b2b-ecommerce-db.firebasestorage.app',
     iosBundleId: 'com.example.b2bEcommerce',
   );
+
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyBLt0EkNNK9LetdeKPtYJWrzZe7AM7EdhM',
+    appId: '1:725441572999:web:cb042627982632181dc822',
+    messagingSenderId: '725441572999',
+    projectId: 'b2b-ecommerce-db',
+    authDomain: 'b2b-ecommerce-db.firebaseapp.com',
+    storageBucket: 'b2b-ecommerce-db.firebasestorage.app',
+    measurementId: 'G-9Z4436TN3K',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyCLW27hrGmWOdHm62dSNIgKv80jZNcrshY',
+    appId: '1:725441572999:ios:c9724840904120e11dc822',
+    messagingSenderId: '725441572999',
+    projectId: 'b2b-ecommerce-db',
+    storageBucket: 'b2b-ecommerce-db.firebasestorage.app',
+    iosBundleId: 'com.example.b2bEcommerce',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyBLt0EkNNK9LetdeKPtYJWrzZe7AM7EdhM',
+    appId: '1:725441572999:web:75b7679ad657c30c1dc822',
+    messagingSenderId: '725441572999',
+    projectId: 'b2b-ecommerce-db',
+    authDomain: 'b2b-ecommerce-db.firebaseapp.com',
+    storageBucket: 'b2b-ecommerce-db.firebasestorage.app',
+    measurementId: 'G-SVPCPLMRH9',
+  );
+
 }
