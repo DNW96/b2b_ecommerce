@@ -65,4 +65,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'b2b-ecommerce-db.firebasestorage.app',
     iosBundleId: 'com.example.b2bEcommerce',
   );
+
 }

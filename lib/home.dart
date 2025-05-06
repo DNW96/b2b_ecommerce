@@ -3,6 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/cart_item.dart';
 import 'providers/cart_provider.dart';
 import 'screens/cart_screen.dart';
+import 'login.dart';
+import 'register.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+
+
 
 
 class HomeScreen extends ConsumerWidget {
@@ -51,7 +57,26 @@ class HomeScreen extends ConsumerWidget {
                 MaterialPageRoute(builder: (context) => const CartScreen()),
               );
             },
-          )
+          ),
+           PopupMenuButton<String>(
+      onSelected: (value) {
+        if (value == 'login') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const LoginScreen()),
+          );
+        } else if (value == 'register') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const RegisterScreen()),
+          );
+        }
+      },
+      itemBuilder: (context) => [
+        const PopupMenuItem(value: 'login', child: Text('Login')),
+        const PopupMenuItem(value: 'register', child: Text('Register')),
+      ],
+    ),
         ],
       ),
       body: GridView.builder(
